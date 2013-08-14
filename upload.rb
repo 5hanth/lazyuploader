@@ -25,7 +25,7 @@ class Uploader
 
 	def upload_to_fb
 
-		print "\nAre you sure you want to upload these photos to Facebook ? <y,n> "
+		print "\nHi #{ENV['USER']}, Are you sure you want to upload these photos to Facebook ? <y,n> "
 
 		if gets.chomp.upcase == 'Y'  
 
@@ -43,10 +43,10 @@ class Uploader
 				photos.each do |file| 
 					puts "Uploading #{file} ..... ( #{count = count.next} of #{total} )"
 					album.photo!( 
-							:access_token=>FB_ACCESS_TOKEN, 
-							:source=>File.new( file ), 
-							:message=>File.basename( file, File.extname(file) )
-						    ) # remove :message if description should not be added to photos.
+							access_token: FB_ACCESS_TOKEN, 
+							source: File.new( file ), 
+							message: File.basename( file, File.extname(file) )
+						    ) # remove message: arg if description should not be added to photos.
 				end
 			else exit
 		end
