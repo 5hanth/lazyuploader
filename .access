@@ -1,0 +1,16 @@
+
+
+# This file is expected to be in ~/ directory 
+# Description: used to store access credentials for lazyuploader script https://github.com/5hanth/lazyuploader
+
+# ------- Configuration ---------
+
+# a short lived Facebook user access token can be obtained from https://developers.facebook.com/tools/access_token/
+
+FB_ACCESS_TOKEN = "REPLACE YOUR FACEBOOK ACCESS TOKEN HERE" 
+
+# yet to be implemented :P ...
+# FLICKR_KEY = "REPLACE YOUR FLICKER KEY HERE"
+# FLICKR_SECRET = "REPLACE YOUR FLICKER SECRET HERE"
+
+# PICASA_KEY = ""

@@ -1,0 +1,31 @@
+
+
+Description:
+
+	This ruby script will upload all the photos from the current directory to facebook.
+	A new album is created with the same name as that of the base directory containing photos.
+	The Description of each photo will be the same as that of the file name without its extension.
+
+TODO:
+
+	Place upload.rb script in your path.
+
+	$ sudo cp upload.rb /usr/bin/upload
+
+	Now you can run the script in any directory containing photos to be uploaded by 'upload' command.
+
+	$ upload
+
+	The script expects a config file in your home directory ~/.access
+
+	Move the provided sample .access file to your home directory
+	and replace your access credentials in ~/.access file.
+
+Requirements:
+
+	gem install fb_graph
+
+Known Issues:
+
+	It is assumed that all the files in the directory are only photo files.
+	Exceptions are not caught.
