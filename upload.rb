@@ -22,7 +22,7 @@ class Uploader
 
 		if c.upcase == 'Y'  
 
-				me = FbGraph::User.me(ACCESS_TOKEN)
+				me = FbGraph::User.me(FB_ACCESS_TOKEN)
 				album_name = File.basename(Dir.pwd)
 				puts "Creating new album '#{album_name}' ..."
 				album = me.album!( :name => album_name )
@@ -31,7 +31,7 @@ class Uploader
 				Dir["*"].each do |file| 
 					puts "Uploading #{file} ..... "
 					album.photo!( 
-							:access_token=>ACCESS_TOKEN, 
+							:access_token=>FB_ACCESS_TOKEN, 
 							:source=>File.new( file ), 
 							:message=>File.basename( file, File.extname(file) )
 						    )
