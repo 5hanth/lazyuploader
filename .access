@@ -5,12 +5,21 @@
 
 # ------- Configuration ---------
 
+#-------- Facebook ----------
+
 # a short lived Facebook user access token can be obtained from https://developers.facebook.com/tools/access_token/
 
 FB_ACCESS_TOKEN = "REPLACE YOUR FACEBOOK ACCESS TOKEN HERE" 
 
-# yet to be implemented :P ...
-# FLICKR_KEY = "REPLACE YOUR FLICKER KEY HERE"
-# FLICKR_SECRET = "REPLACE YOUR FLICKER SECRET HERE"
+#-------- Flickr ----------
 
+FLICKR_APP_KEY = "REPLCE YOUR FLICKR APP KEY HERE"
+FLICKR_SECRET = "REPLACE YOUR FLICKR APP SECRET HERE"
+
+# use generate_tokens.rb script to get access tokens and fill these lines
+# FLICKR_USER_ACCESS_TOKEN = ""
+# FLICKR_USER_ACCESS_SECRET = ""
+
+
+# yet to be implemented :P ...
 # PICASA_KEY = ""
