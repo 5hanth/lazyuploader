@@ -13,13 +13,18 @@ else
 end
 
 require 'fb_graph'
+require 'flickraw'
 
 class Uploader
 
 	def initialize
 
 		puts "\nPhotos :\n "
-		system 'ls'	
+		@photos = Dir["*"].map { |blah| blah if File.file? blah } #  get array of file names.
+		@photos.delete nil
+		@photos.each { |file| puts file }
+
+		@total = @photos.count
 
 	end
 
@@ -34,14 +39,10 @@ class Uploader
 				puts "Creating new album '#{album_name}' ..."
 				album = me.album!( :name => album_name )
 
-				photos = Dir["*"].map { |blah| blah if File.file? blah } #  get array of file names.
-				photos.delete nil
-
 				count = 0
-				total = photos.count
 
-				photos.each do |file| 
-					puts "Uploading #{file} ..... ( #{count = count.next} of #{total} )"
+				@photos.each do |file| 
+					puts "Uploading #{file} ..... ( #{count = count.next} of #{@total} )"
 					album.photo!( 
 							access_token: FB_ACCESS_TOKEN, 
 							source: File.new( file ), 
@@ -53,9 +54,45 @@ class Uploader
 
 		puts "Photos Successfully uploaded to Facebook."
 	end
+
+	def upload_to_flickr
+
+		FlickRaw.api_key = FLICKR_APP_KEY
+		FlickRaw.shared_secret = FLICKR_APP_SECRET
+		flickr.access_token = FLICKR_USER_TOKEN
+		flickr.access_secret = FLICKR_USER_SECRET
+
+		print "\nAre you sure you want to upload these photos to Flickr ? <y,n> "
+
+		if gets.chomp.upcase == 'Y'  
+
+			count = 0
+
+			@photos.each do |file| 
+				puts "Uploading #{file} ..... ( #{count = count.next} of #{@total} )"
+				flickr.upload_photo file, title: File.basename( file, File.extname(file))
+				end
+		else exit
+		end
+		puts "Photos Successfully uploaded to Flickr."
+	end
 end
 
 # ------- Main -------
 
 	lazy_guy = Uploader.new
-	lazy_guy.upload_to_fb
+	print """
+	1. Upload photos to Facebook.
+	2. Upload photos to Flickr.
+	3. Upload photos to all sites.
+	> """
+	case gets.chomp.to_i
+
+	when 1 then lazy_guy.upload_to_fb
+	when 2 then lazy_guy.upload_to_flickr
+	when 3 
+		lazy_guy.upload_to_fb
+		lazy_guy.upload_to_flickr
+	end
+
+

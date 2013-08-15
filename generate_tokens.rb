@@ -34,7 +34,7 @@ class Generator
 			login = flickr.test.login
 			puts "You are now authenticated as #{login.username} "
 			puts "copy these lines to your config file ~/.access "
-			puts "FLICKR_USER_TOKEN = #{flickr.access_token}\nFLICKR_USER_SECRET = #{flickr.access_secret}"
+			puts "FLICKR_USER_TOKEN = '#{flickr.access_token}'\nFLICKR_USER_SECRET = '#{flickr.access_secret}'"
 
 		rescue FlickRaw::FailedResponse => e
 			puts "Authentication failed : #{e.msg}"
