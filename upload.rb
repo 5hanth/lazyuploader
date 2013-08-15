@@ -47,7 +47,7 @@ class Uploader
 				    ) # remove message: arg if description should not be added to photos.
 		end
 
-		puts "Photos Successfully uploaded to Facebook."
+		puts "Photos Successfully uploaded to Facebook.\n"
 	end
 
 	def upload_to_flickr
@@ -65,7 +65,15 @@ class Uploader
 			flickr.upload_photo file, title: File.basename( file, File.extname(file))
 		end
 
-		puts "Photos Successfully uploaded to Flickr."
+		puts "Photos Successfully uploaded to Flickr.\n"
+	end
+
+	def upload_to_picasa
+		
+		ENV['GOOGLE_USER_ID'] = GOOGLE_EMAIL_ID
+		ENV['GOOGLE_PASSWORD'] = GOOGLE_PASSWORD
+		puts "\nUploading Photos to Picasa ..."
+		system "thor imagery:upload #{Dir.pwd}"
 	end
 end
 
@@ -81,16 +89,19 @@ end
 	print """
 	1. Upload photos to Facebook.
 	2. Upload photos to Flickr.
-	3. Upload photos to all sites.
+	3. Upload photos to Picasa.
+	4. Upload photos to all sites.
 	> """
 
 	case gets.chomp.to_i
 		when 1 then lazy_guy.upload_to_fb if ask 'Facebook'
 		when 2 then lazy_guy.upload_to_flickr if ask 'Flickr'
-		when 3 
-			if ask 'Facebook & Flickr'
+		when 3 then lazy_guy.upload_to_picasa if ask 'Picasa'
+		when 4 
+			if ask 'Facebook , Flickr & Picasa'
 				lazy_guy.upload_to_fb
 				lazy_guy.upload_to_flickr
+				lazy_guy.upload_to_picasa
 			end
 	end
 

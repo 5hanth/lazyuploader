@@ -11,6 +11,11 @@ for facebook :
 for Flickr:
  No sets are created. Just photos are uploaded.
 
+for Picasa:
+ A Thor script (https://github.com/morgoth/picasa/raw/master/extra/Thorfile) is used
+ for creating album & uploading photos.
+
+
 TODO:
 
  Place upload.rb script in your path.
@@ -23,16 +28,31 @@ TODO:
  
  The script expects a config file in your home directory ~/.access
  
- Move the provided sample .access file to your home directory
- and replace your access credentials in ~/.access file.
+ Facebook:
+  
+  Move the provided sample .access file to your home directory
+  and replace your access credentials in ~/.access file.
 
- Before running generate_tokens.rb script make sure you have given your Flickr app key & app secret 
- in ~/.access file
+ Flickr:
+
+  Run generate_tokens.rb script to get user access tokens from Flickr.
+  
+  Note: Before running generate_tokens.rb script make sure you have given your Flickr app key & app secret 
+  in ~/.access file
  
+ Picasa:
+
+  Put you email id & password in ~/.access file
+
+
 Requirements:
 
  $ gem install fb_graph
  $ gem install flickraw
+ $ gem install picasa
+ $ gem install thor
+ $ thor install https://github.com/morgoth/picasa/raw/master/extra/Thorfile --as imagery --force
+
 
 Known Issues:
 

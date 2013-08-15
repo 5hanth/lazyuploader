@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 # https://github.com/5hanth/lazyuploader
-# mail@shanth.tk
 
 config = Dir.home+'/.access'	# change your config file name accordingly.
 
@@ -33,7 +32,7 @@ class Generator
 			flickr.get_access_token(token['oauth_token'], token['oauth_token_secret'], verify)
 			login = flickr.test.login
 			puts "You are now authenticated as #{login.username} "
-			puts "copy these lines to your config file ~/.access "
+			puts "copy these lines to your config file #{config} "
 			puts "FLICKR_USER_TOKEN = '#{flickr.access_token}'\nFLICKR_USER_SECRET = '#{flickr.access_secret}'"
 
 		rescue FlickRaw::FailedResponse => e
