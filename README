@@ -2,7 +2,7 @@
 
 Description:
 
- This ruby script will upload all the photos from the current directory to facebook & Flickr.
+ This ruby script will upload all the photos from the current directory to facebook , Flickr & Picasa.
 
 for facebook :
  A new album is created with the same name as that of the base directory containing photos.
